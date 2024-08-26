@@ -1,0 +1,41 @@
+{
+  "endpoints": [
+    {
+      "name": "employee_create",
+      "url": "/employee/create",
+      "tests": [
+        {
+          "description": "Happy Path",
+          "payload": {"EmpID": 123, "EmpName": "John Doe", "DOB": "1990-01-01", "Dept": 1},
+          "expected_status": 201
+        },
+        {
+          "description": "Missing EmpID",
+          "payload": {"EmpName": "John Doe", "DOB": "1990-01-01", "Dept": 1},
+          "expected_status": 400
+        },
+        {
+          "description": "Null EmpName",
+          "payload": {"EmpID": 123, "EmpName": null, "DOB": "1990-01-01", "Dept": 1},
+          "expected_status": 400
+        }
+      ]
+    },
+    {
+      "name": "department_create",
+      "url": "/department/create",
+      "tests": [
+        {
+          "description": "Happy Path",
+          "payload": {"DepID": 1, "DeptName": "Engineering"},
+          "expected_status": 201
+        },
+        {
+          "description": "Missing DepID",
+          "payload": {"DeptName": "Engineering"},
+          "expected_status": 400
+        }
+      ]
+    }
+  ]
+}
